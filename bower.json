@@ -1,0 +1,27 @@
+{
+  "name": "Clientes",
+  "version": "0.0.1",
+  "description": "Pequeno app com Crud de Clientes feito em PHP",
+  "main": "app.js",
+  "moduleType": [],
+  "keywords": [
+    "php",
+    "clientes",
+    "crud"
+  ],
+  "authors": [
+    "alexandre roch"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}
