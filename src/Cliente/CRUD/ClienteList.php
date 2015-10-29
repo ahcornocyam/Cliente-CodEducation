@@ -44,7 +44,7 @@ class ClienteList
 
     public function CadastroClientes(){
 
-            $this->crud->addCliente($cliente = new PessoaFisica(1,
+        $this->crud->addCliente(new PessoaFisica(1,
                                                     "Maycon",
                                                     "Alexandre",
                                                     30,
@@ -57,7 +57,7 @@ class ClienteList
                                                 )
                                 );
         ///////////////////////////////////////////////////////////
-        $this->crud->addCliente($cliente = new PessoaFisica(2,
+        $this->crud->addCliente(new PessoaFisica(2,
                 "Joao",
                 "Silva",
                 43,
@@ -71,7 +71,7 @@ class ClienteList
             )
         );
         ///////////////////////////////////////////////////////////
-        $this->crud->addCliente($cliente = new PessoaJuridica(3,
+        $this->crud->addCliente(new PessoaJuridica(3,
                 "Mario",
                 "Quintana",
                 41,
@@ -84,7 +84,7 @@ class ClienteList
             )
         );
         ///////////////////////////////////////////////////////////
-        $this->crud->addCliente($cliente = new PessoaFisica(4,
+        $this->crud->addCliente(new PessoaFisica(4,
                 "Alexandre",
                 "fulano",
                 38,
@@ -98,7 +98,7 @@ class ClienteList
             )
         );
         ///////////////////////////////////////////////////////////
-        $this->crud->addCliente($cliente = new PessoaFisica(5,
+        $this->crud->addCliente(new PessoaFisica(5,
                 "Ronaldo",
                 "Andrade",
                 28,
@@ -111,7 +111,7 @@ class ClienteList
             )
         );
         ///////////////////////////////////////////////////////////
-        $this->crud->addCliente($cliente = new PessoaJuridica(6,
+        $this->crud->addCliente(new PessoaJuridica(6,
                 "Alex",
                 "da Rocha",
                 54,
@@ -125,8 +125,5 @@ class ClienteList
             )
         );
         ///////////////////////////////////////////////////////////
-
     }
-
-
 }
