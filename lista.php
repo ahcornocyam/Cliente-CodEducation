@@ -27,7 +27,7 @@
                 <td><?=$cliente->getIdade()?></td>
                 <td><?=$cliente->getEstrela()." estrelas"?></td>
                 <td><?=$cliente->getTipo()?></td>
-                <td><?=($cliente->getTipo() == "pessoa fisica")?$cliente->getCpf() : $cliente->getCnpj() ?></td>
+                <td><?=$cliente->getDocumento()?></td>
                 <td><?=$cliente->getEndereco()?></td>
                 <td><?=$cliente->getEmail()?></td>
                 <td><?=$cliente->getFone()?></td>

@@ -17,7 +17,7 @@ $cliente  = $clientes->getCrud()->pesquisaCliente($id);
             <p class="panel panel-default panel-body"><i class="text-uppercase text-primary">Tipo :</i> <?=$cliente->getTipo();?></p>
         </div>
         <div>
-            <p class="panel panel-default panel-body"><i class="text-uppercase text-primary">CPF/CNPJ:</i> <?=($cliente->getTipo() == "pessoa fisica")?$cliente->getCpf() : $cliente->getCnpj()?></p>
+            <p class="panel panel-default panel-body"><i class="text-uppercase text-primary">CPF/CNPJ:</i> <?=$cliente->getDocumento()?></p>
         </div>
         <div>
             <p class="panel panel-default panel-body"><i class="text-uppercase text-primary">Endereco:</i> <?=$cliente->getEndereco();?></p>

@@ -15,8 +15,7 @@ use Cliente\Pessoa\PessoaAbstract;
 class PessoaJuridica extends PessoaAbstract implements PessoaJuridicaInterface
 {
     private $cnpj;
-    private $estrela;
-    private $enderecoCobranca;
+
 
     /**
      * PessoaJuridica constructor.
@@ -26,10 +25,9 @@ class PessoaJuridica extends PessoaAbstract implements PessoaJuridicaInterface
      */
     public function __construct($id, $nome, $sobrenome, $idade, $endereco, $fone, $email, $tipo, $cnpj, $estrela, $enderecoCobranca = null)
     {
-        parent::__construct($id,$nome,$sobrenome,$idade,$endereco,$fone,$email,"pessoa juridica");
+        parent::__construct($id,$nome,$sobrenome,$idade,$endereco,$fone,$email,"pessoa juridica",$estrela,$enderecoCobranca);
         $this->cnpj = $cnpj;
-        $this->estrela = $estrela;
-        ($enderecoCobranca == null)? $this->enderecoCobranca = $endereco: $this->enderecoCobranca = $enderecoCobranca;
+
     }
 
     /**
@@ -50,41 +48,7 @@ class PessoaJuridica extends PessoaAbstract implements PessoaJuridicaInterface
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getEstrela()
-    {
-        return $this->estrela;
-    }
 
-    /**
-     * @param mixed $estrela
-     * @return PessoaJuridica
-     */
-    public function setEstrela($estrela)
-    {
-        $this->estrela = $estrela;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEnderecoCobranca()
-    {
-        return $this->enderecoCobranca;
-    }
-
-    /**
-     * @param mixed $enderecoCobranca
-     * @return PessoaJuridica
-     */
-    public function setEnderecoCobranca($enderecoCobranca)
-    {
-        $this->enderecoCobranca = $enderecoCobranca;
-        return $this;
-    }
     public function getDocumento(){
         return $this->getCnpj();
     }

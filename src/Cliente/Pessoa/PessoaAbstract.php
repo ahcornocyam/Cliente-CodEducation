@@ -8,7 +8,10 @@
 
 namespace Cliente\Pessoa;
 
-abstract class PessoaAbstract
+use Cliente\Pessoa\Interfaces\EnderecoCobrancaInterface;
+use Cliente\Pessoa\Interfaces\GrauImportanciaInterface;
+
+abstract class PessoaAbstract implements EnderecoCobrancaInterface,GrauImportanciaInterface
 {
     private $id;
     private $nome;
@@ -18,6 +21,8 @@ abstract class PessoaAbstract
     private $fone;
     private $email;
     private $tipo;
+    private $estrela;
+    private $enderecoCobranca;
 
     /**
      * PessoaAbstract constructor.
@@ -30,7 +35,7 @@ abstract class PessoaAbstract
      * @param $email
      * @param $tipo
      */
-    public function __construct($id, $nome, $sobrenome, $idade, $endereco, $fone, $email, $tipo)
+    public function __construct($id, $nome, $sobrenome, $idade, $endereco, $fone, $email, $tipo, $estrela,$enderecoCobranca=null)
     {
         $this->setId($id)
             ->setNome($nome)
@@ -39,7 +44,9 @@ abstract class PessoaAbstract
             ->setEndereco($endereco)
             ->setFone($fone)
             ->setEmail($email)
-            ->setTipo($tipo);
+            ->setTipo($tipo)
+            ->setEstrela($estrela);
+        ($enderecoCobranca == null)? $this->enderecoCobranca = $endereco: $this->enderecoCobranca = $enderecoCobranca;
     }
 
 
@@ -187,9 +194,41 @@ abstract class PessoaAbstract
         return $this;
     }
 
-    abstract public function getEstrela();
-    abstract public function setEstrela($valor);
-    abstract public function getEnderecoCobranca();
-    abstract public function setEnderecoCobranca($valor);
+    /**
+     * @return mixed
+     */
+    public function getEstrela()
+    {
+        return $this->estrela;
+    }
+
+    /**
+     * @param mixed $estrela
+     * @return PessoaJuridica
+     */
+    public function setEstrela($estrela)
+    {
+        $this->estrela = $estrela;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEnderecoCobranca()
+    {
+        return $this->enderecoCobranca;
+    }
+
+    /**
+     * @param mixed $enderecoCobranca
+     * @return PessoaJuridica
+     */
+    public function setEnderecoCobranca($enderecoCobranca)
+    {
+        $this->enderecoCobranca = $enderecoCobranca;
+        return $this;
+    }
+
     abstract public function getDocumento();
 }

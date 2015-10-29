@@ -11,6 +11,7 @@ namespace Cliente\Pessoa\Interfaces;
 
 interface PessoaJuridicaInterface
 {
+
     public function getCnpj();
     public function setCnpj($valor);
 }

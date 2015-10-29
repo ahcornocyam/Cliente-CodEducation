@@ -15,57 +15,17 @@ use Cliente\Pessoa\PessoaAbstract;
 class PessoaFisica extends PessoaAbstract implements PessoaFisicaInterface
 {
     private $cpf;
-    private $estrela;
-    private $enderecoCobranca;
-
     /**
      * PessoaFisica constructor.
      * @param $cpf
      * @param $estrela
      * @param $enderecoCobranca
      */
-    public function __construct($id, $nome, $sobrenome, $idade, $endereco, $fone, $email, $tipo, $cpf, $estrela, $enderecoCobranca =null)
+    public function __construct($id, $nome, $sobrenome, $idade, $endereco, $fone, $email, $tipo, $cpf, $estrela, $enderecoCobranca = null)
     {
-        parent::__construct($id,$nome,$sobrenome,$idade,$endereco,$fone,$email,"pessoa fisica");
+        parent::__construct($id,$nome,$sobrenome,$idade,$endereco,$fone,$email,"pessoa juridica",$estrela,$enderecoCobranca);
         $this->cpf = $cpf;
-        $this->estrela = $estrela;
-        ($enderecoCobranca == null)? $this->enderecoCobranca = $endereco: $this->enderecoCobranca = $enderecoCobranca;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getEnderecoCobranca()
-    {
-        return $this->enderecoCobranca;
-    }
-
-    /**
-     * @param mixed $enderecoCobranca
-     * @return PessoaFisica
-     */
-    public function setEnderecoCobranca($enderecoCobranca)
-    {
-        $this->enderecoCobranca = $enderecoCobranca;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEstrela()
-    {
-        return $this->estrela;
-    }
-
-    /**
-     * @param mixed $estrela
-     * @return PessoaFisica
-     */
-    public function setEstrela($estrela)
-    {
-        $this->estrela = $estrela;
-        return $this;
     }
 
     /**
@@ -75,7 +35,6 @@ class PessoaFisica extends PessoaAbstract implements PessoaFisicaInterface
     {
         return $this->cpf;
     }
-
     /**
      * @param mixed $cpf
      * @return PessoaFisica
