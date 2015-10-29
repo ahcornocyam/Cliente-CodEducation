@@ -1,5 +1,24 @@
 <?php
-    require_once "autoload.php";
+    require_once "bootstrap/autoload.php";
+
+
+    use Cliente\CRUD\ClienteList as lista;
+    define('CLASS_VIEWS',__DIR__ . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR);
+    $clientes = new lista();
+
+    (!isset($_GET['cliente']) || $_GET['cliente'] < 0)? $includePg = CLASS_VIEWS."lista.php" : $includePg = CLASS_VIEWS."descricao.php";
+
+    if (!isset($_GET['ordem']) || $_GET['ordem'] == 1) {
+        $_GET['ordem'] = $ordem = 0;
+        $class = "glyphicon glyphicon-sort-by-order";
+        $clientes->getCrud()->ordemCrescente();
+    } elseif ($_GET['ordem'] == 0) {
+        $_GET['ordem'] = $ordem = 1;
+        $class = "glyphicon glyphicon-sort-by-order-alt";
+        $clientes->getCrud()->ordemDecrescente();
+    }
+    $lista = $clientes->getCrud()->listaClientes();
+    define("TOTALCLIENTES", count($lista));
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
