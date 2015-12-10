@@ -35,10 +35,9 @@ abstract class PessoaAbstract implements EnderecoCobrancaInterface,GrauImportanc
      * @param $email
      * @param $tipo
      */
-    public function __construct($id, $nome, $sobrenome, $idade, $endereco, $fone, $email, $tipo, $estrela,$enderecoCobranca=null)
+    public function __construct($nome, $sobrenome, $idade, $endereco, $fone, $email, $tipo, $estrela,$enderecoCobranca=null)
     {
-        $this->setId($id)
-            ->setNome($nome)
+        $this->setNome($nome)
             ->setSobrenome($sobrenome)
             ->setIdade($idade)
             ->setEndereco($endereco)

@@ -21,9 +21,9 @@ class PessoaFisica extends PessoaAbstract implements PessoaFisicaInterface
      * @param $estrela
      * @param $enderecoCobranca
      */
-    public function __construct($id, $nome, $sobrenome, $idade, $endereco, $fone, $email, $tipo, $cpf, $estrela, $enderecoCobranca = null)
+    public function __construct($nome, $sobrenome, $idade, $endereco, $fone, $email, $tipo, $cpf, $estrela, $enderecoCobranca = null)
     {
-        parent::__construct($id,$nome,$sobrenome,$idade,$endereco,$fone,$email,"pessoa juridica",$estrela,$enderecoCobranca);
+        parent::__construct($nome,$sobrenome,$idade,$endereco,$fone,$email,"pessoa Fisica",$estrela,$enderecoCobranca);
         $this->cpf = $cpf;
 
     }

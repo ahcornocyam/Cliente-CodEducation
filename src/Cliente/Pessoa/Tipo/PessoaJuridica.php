@@ -23,9 +23,9 @@ class PessoaJuridica extends PessoaAbstract implements PessoaJuridicaInterface
      * @param $estrela
      * @param $enderecoCobranca
      */
-    public function __construct($id, $nome, $sobrenome, $idade, $endereco, $fone, $email, $tipo, $cnpj, $estrela, $enderecoCobranca = null)
+    public function __construct($nome, $sobrenome, $idade, $endereco, $fone, $email, $tipo, $cnpj, $estrela, $enderecoCobranca = null)
     {
-        parent::__construct($id,$nome,$sobrenome,$idade,$endereco,$fone,$email,"pessoa juridica",$estrela,$enderecoCobranca);
+        parent::__construct($nome,$sobrenome,$idade,$endereco,$fone,$email,"pessoa juridica",$estrela,$enderecoCobranca);
         $this->cnpj = $cnpj;
 
     }

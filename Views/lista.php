@@ -11,7 +11,7 @@
             <th>Idade</th>
             <th>Classificação do Cliente</th>
             <th>Tipo</th>
-            <th>CPF</th>
+            <th>CPF/CPNJ</th>
             <th>Endereco</th>
             <th>Email</th>
             <th>Fone</th>
@@ -19,19 +19,19 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach($lista as $cliente):?>
+        <?php foreach( $lista as $cliente ):?>
             <tr class="trClick">
-                <td data-id="<?= $cliente-> getId() ?>"><?= $cliente-> getId() ?></td>
-                <td><?= $cliente-> getNome() ?></td>
-                <td><?= $cliente-> getSobrenome() ?></td>
-                <td><?= $cliente-> getIdade() ?></td>
-                <td><?= $cliente-> getEstrela()." estrelas" ?></td>
-                <td><?= $cliente-> getTipo() ?></td>
-                <td><?= $cliente-> getDocumento() ?></td>
-                <td><?= $cliente-> getEndereco() ?></td>
-                <td><?= $cliente-> getEmail() ?></td>
-                <td><?= $cliente-> getFone() ?></td>
-                <td><?= $cliente-> getEnderecoCobranca() ?></td>
+                <td data-id="<?= $cliente-> id ?>"><?= $cliente-> id ?></td>
+                <td><?= $cliente->nome ?></td>
+                <td><?= $cliente-> sobrenome ?></td>
+                <td><?= $cliente-> idade ?></td>
+                <td><?= $cliente-> estrela." estrelas" ?></td>
+                <td><?= $cliente-> tipo ?></td>
+                <td><?= $cliente-> cpf_cnpj ?></td>
+                <td><?= $cliente-> endereco ?></td>
+                <td><?= $cliente-> email ?></td>
+                <td><?= $cliente-> fone ?></td>
+                <td><?= $cliente-> enderecoCobranca ?></td>
             </tr>
         <?php endforeach ?>
         </tbody>

@@ -8,44 +8,31 @@
 
 namespace Cliente\CRUD;
 
-use Cliente\CRUD\ClienteCrud as Crud;
+
+use Cliente\CRUD\CrudCliente as Crud;
+use Cliente\DB\Connectar\Conectar;
 use Cliente\Pessoa\Tipo\PessoaFisica as PessoaFisica;
 use Cliente\Pessoa\Tipo\PessoaJuridica as PessoaJuridica;
 
-class ClienteList
+class Fixtures
 {
     private $crud;
+    private $pdo;
 
-    /**
-     * @return ClienteCrud
-     */
-    public function getCrud()
-    {
-        return $this->crud;
-    }
-
-    /**
-     * @param ClienteCrud $crud
-     * @return ClienteList
-     */
-    public function setCrud($crud)
-    {
-        $this->crud = $crud;
-        return $this;
-    }
     /**
      * ClienteList constructor.
      */
-    public function __construct()
+    public function __construct( $tabela )
     {
-        $this->crud = new Crud();
-        $this->CadastroClientes();
+        $this->pdo = Conectar::getConecta();
+        $this->crud = new Crud( $this->pdo );
+        $this->verificar( $tabela );
+
     }
 
-    public function CadastroClientes(){
+    public function cadastroClientes(){
 
-        $this->crud->addCliente(new PessoaFisica(1,
-                                                    "Maycon",
+        $this->crud->persist(new PessoaFisica(   "Maycon",
                                                     "Alexandre",
                                                     30,
                                                     "rua 1",
@@ -57,8 +44,7 @@ class ClienteList
                                                 )
                                 );
         ///////////////////////////////////////////////////////////
-        $this->crud->addCliente(new PessoaFisica(2,
-                "Joao",
+        $this->crud->persist(new PessoaFisica("Joao",
                 "Silva",
                 43,
                 "rua 2",
@@ -71,8 +57,7 @@ class ClienteList
             )
         );
         ///////////////////////////////////////////////////////////
-        $this->crud->addCliente(new PessoaJuridica(3,
-                "Mario",
+        $this->crud->persist(new PessoaJuridica("Mario",
                 "Quintana",
                 41,
                 "rua 3",
@@ -84,8 +69,7 @@ class ClienteList
             )
         );
         ///////////////////////////////////////////////////////////
-        $this->crud->addCliente(new PessoaFisica(4,
-                "Alexandre",
+        $this->crud->persist(new PessoaFisica("Alexandre",
                 "fulano",
                 38,
                 "rua 1",
@@ -98,8 +82,7 @@ class ClienteList
             )
         );
         ///////////////////////////////////////////////////////////
-        $this->crud->addCliente(new PessoaFisica(5,
-                "Ronaldo",
+        $this->crud->persist(new PessoaFisica("Ronaldo",
                 "Andrade",
                 28,
                 "rua 15",
@@ -111,8 +94,7 @@ class ClienteList
             )
         );
         ///////////////////////////////////////////////////////////
-        $this->crud->addCliente(new PessoaJuridica(6,
-                "Alex",
+        $this->crud->persist(new PessoaJuridica("Alex",
                 "da Rocha",
                 54,
                 "rua 11",
@@ -125,5 +107,21 @@ class ClienteList
             )
         );
         ///////////////////////////////////////////////////////////
+    }
+
+
+    public function verificar($tabela){
+        try{
+            $verifica = $this->pdo->prepare("SELECT * FROM {$tabela} ");
+            $verifica->execute();
+            $rows = $verifica->fetchAll();
+            if( $rows == null ){
+                $this->cadastroClientes();
+                $this->crud->flush();
+            }
+        }catch (\PDOException $e){
+            echo "Não é possivel fazer a listagem dos dados";
+            die( "Código: {$e->getCode()}, Menagem: {$e->getMessage()}" );
+        }
     }
 }
